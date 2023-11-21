@@ -27,14 +27,35 @@ const KEYS = [
   "z",
 ];
 
-export function Keyboard() {
+interface KeyboardProps {
+  activeLetters: string[];
+  inactiveLetters: string[];
+  addingGuessedLetters: (letter: string) => void;
+}
+
+export function Keyboard({
+  activeLetters,
+  inactiveLetters,
+  addingGuessedLetters,
+}: KeyboardProps) {
   return (
     <div className="keyboard-group">
-      {KEYS.map((key, index) => (
-        <button className="key" key={index}>
-          {key}
-        </button>
-      ))}
+      {KEYS.map((key, index) => {
+        const isActive = activeLetters.includes(key);
+        const isInactive = inactiveLetters.includes(key);
+        return (
+          <button
+            onClick={() => addingGuessedLetters(key)}
+            className={`key ${isActive ? "active" : ""} ${
+              isInactive ? "inactive" : ""
+            }`}
+            key={index}
+            disabled={isActive || isInactive}
+          >
+            {key}
+          </button>
+        );
+      })}
     </div>
   );
 }
