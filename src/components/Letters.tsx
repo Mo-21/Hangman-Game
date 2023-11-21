@@ -1,18 +1,27 @@
 interface LettersProps {
-  guessedLetters: string[] | undefined;
+  guessedLetters: string[];
   wordToGuess: string;
+  reveal?: boolean;
 }
 
-export function Letters({ guessedLetters, wordToGuess }: LettersProps) {
+export function Letters({
+  guessedLetters,
+  wordToGuess,
+  reveal = false,
+}: LettersProps) {
   return (
     <div className="letters-group">
       {wordToGuess.split("").map((letter, index) => (
         <span key={index} className="letter">
           <span
             style={{
-              visibility: guessedLetters.includes(letter)
-                ? "visible"
-                : "hidden",
+              visibility:
+                guessedLetters.includes(letter) || reveal
+                  ? "visible"
+                  : "hidden",
+
+              color:
+                !guessedLetters.includes(letter) && reveal ? "red" : "black",
             }}
           >
             {letter}

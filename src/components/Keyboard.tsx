@@ -30,6 +30,7 @@ const KEYS = [
 interface KeyboardProps {
   activeLetters: string[];
   inactiveLetters: string[];
+  disabled?: boolean;
   addingGuessedLetters: (letter: string) => void;
 }
 
@@ -37,6 +38,7 @@ export function Keyboard({
   activeLetters,
   inactiveLetters,
   addingGuessedLetters,
+  disabled = false,
 }: KeyboardProps) {
   return (
     <div className="keyboard-group">
@@ -50,7 +52,7 @@ export function Keyboard({
               isInactive ? "inactive" : ""
             }`}
             key={index}
-            disabled={isActive || isInactive}
+            disabled={isActive || isInactive || disabled}
           >
             {key}
           </button>
