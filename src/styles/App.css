@@ -1,10 +1,16 @@
 html {
   height: 100vh;
+  background-color: #1ec1dd;
 }
 
-body,
+body {
+  height: 100%;
+}
+
 :root {
   height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .main-container {
@@ -12,7 +18,7 @@ body,
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  max-width: 800px;
 }
 
 .hangman-drawing {
@@ -20,30 +26,23 @@ body,
 }
 
 .base {
-  position: absolute;
   height: 10px;
   width: 300px;
   background: black;
-  top: 600px;
-  left: -145px;
 }
 
 .column {
   width: 10px;
   height: 600px;
   background: black;
-  position: absolute;
-  top: 0;
-  left: 0;
+  margin-left: 145px;
 }
 
 .row {
   width: 200px;
   height: 10px;
   background: black;
-  position: absolute;
-  top: 0;
-  left: 0;
+  margin-left: 145px;
 }
 
 .small-column {
@@ -52,7 +51,7 @@ body,
   background: black;
   position: absolute;
   top: 0;
-  left: 200px;
+  left: 345px;
 }
 
 .head {
@@ -61,7 +60,7 @@ body,
   background: white;
   position: absolute;
   top: 100px;
-  left: 200px;
+  left: 345px;
   border: solid 10px;
   border-radius: 100%;
   transform: translateX(-30px);
@@ -73,7 +72,7 @@ body,
   background: black;
   position: absolute;
   top: 170px;
-  left: 200px;
+  left: 345px;
 }
 
 .left-arm {
@@ -82,7 +81,7 @@ body,
   background: black;
   position: absolute;
   top: 200px;
-  left: 160px;
+  left: 305px;
   transform: rotate(130deg);
 }
 
@@ -92,7 +91,7 @@ body,
   background: black;
   position: absolute;
   top: 200px;
-  left: 240px;
+  left: 385px;
   transform: rotate(-130deg);
 }
 
@@ -102,7 +101,7 @@ body,
   background: black;
   position: absolute;
   top: 355px;
-  left: 175px;
+  left: 320px;
   transform: rotate(30deg);
 }
 
@@ -112,6 +111,52 @@ body,
   background: black;
   position: absolute;
   top: 355px;
-  left: 225px;
+  left: 370px;
   transform: rotate(-30deg);
+}
+
+.letters-group {
+  margin-top: 1rem;
+  display: flex;
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+
+.letter {
+  margin-left: 15px;
+  border-bottom: 10px solid black;
+}
+
+.keyboard-group {
+  display: grid;
+  grid-template-columns: repeat(max(5), minmax(70px, 1fr));
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.key {
+  border: 3px black solid;
+  background-color: #fb383c;
+  width: 100%;
+  aspect-ratio: 1/1;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
+  cursor: pointer;
+}
+
+.key.active {
+  background-color: #fdee18;
+  color: white;
+  font-weight: 700;
+}
+
+.key.inactive {
+  opacity: 0.2;
+}
+
+.key:focus:not(:disabled),
+.key:hover:not(:disabled) {
+  background-color: #fdee18;
 }
