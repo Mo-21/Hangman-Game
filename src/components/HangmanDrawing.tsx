@@ -1,25 +1,26 @@
 import "../styles/App.css";
 
-const HEAD = <div className="head"></div>;
-const BODY = <div className="body"></div>;
-const LEFT_ARM = <div className="left-arm"></div>;
-const RIGHT_ARM = <div className="right-arm"></div>;
-const LEFT_LEG = <div className="left-leg"></div>;
-const RIGHT_LEG = <div className="right-leg"></div>;
+const HEAD = <div className="head" />;
+const BODY = <div className="body" />;
+const LEFT_ARM = <div className="left-arm" />;
+const RIGHT_ARM = <div className="right-arm" />;
+const LEFT_LEG = <div className="left-leg" />;
+const RIGHT_LEG = <div className="right-leg" />;
 
-export function HangmanDrawing() {
+const BODY_PARTS = [HEAD, BODY, LEFT_ARM, RIGHT_ARM, LEFT_LEG, RIGHT_LEG];
+
+interface HangmanDrawingProp {
+  numberOfWrongGuesses: number | undefined;
+}
+
+export function HangmanDrawing({ numberOfWrongGuesses }: HangmanDrawingProp) {
   return (
     <div className="hangman-drawing">
-      <div className="base"></div>
-      <div className="column"></div>
-      <div className="row"></div>
-      <div className="small-column"></div>
-      {HEAD}
-      {BODY}
-      {LEFT_ARM}
-      {RIGHT_ARM}
-      {LEFT_LEG}
-      {RIGHT_LEG}
+      {BODY_PARTS.slice(0, numberOfWrongGuesses)}
+      <div className="small-column" />
+      <div className="row" />
+      <div className="column" />
+      <div className="base" />
     </div>
   );
 }

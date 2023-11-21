@@ -9,12 +9,17 @@ function App() {
   const [wordToGuess, setWordToGuess] = useState(() => {
     return words[Math.floor(Math.random() * words.length)];
   });
-  const [guessedLetters, setGuessedLetters] = useState<string[]>();
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
+
+  const incorrectLetters = guessedLetters?.filter(
+    (letter) => !wordToGuess.includes(letter)
+  );
 
   return (
     <div className="main-container">
-      <HangmanDrawing />
-      <Letters />
+      <h1>Hello</h1>
+      <HangmanDrawing numberOfWrongGuesses={incorrectLetters?.length} />
+      <Letters guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
       <Keyboard />
     </div>
   );
