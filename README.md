@@ -2,7 +2,9 @@
 
 This Hangman game is built using React, Vite, and TypeScript.
 
-![Hangman](image.png)
+[Live Preview](https://gentle-sprinkles-e560fb.netlify.app/)
+
+![Hangman](image-1.png)
 
 ## Features
 
